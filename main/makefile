@@ -3,8 +3,8 @@
 
 #construlle el ejecutable encriptacion.out
 
-encriptacion.out: lib_encriptacion.a main.c
-	gcc -o ../encriptacion.out main.c lib_encriptacion.a -lm
+encriptacion.out: lib_encriptacion.a main_sp.c
+	gcc -o ../encriptacion.out main_en.c lib_encriptacion.a -lm
 
 
 

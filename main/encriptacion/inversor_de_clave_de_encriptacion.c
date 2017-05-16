@@ -1,3 +1,6 @@
+//Author: Diego Rodríguez Riera
+//Brief: crypt key inverter
+
 #include <stdlib.h>
 
 

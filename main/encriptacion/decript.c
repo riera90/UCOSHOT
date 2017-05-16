@@ -1,3 +1,7 @@
+//Author: Diego Rodríguez Riera
+//Brief: decrypt algorith
+
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -23,28 +27,11 @@ int desencriptar(char *data_file , char *user_key ,int zn, int lvl_seguridad, ch
 	int size=(int)pow(lvl_seguridad+1,2);
 	int vector[size];
 	char aux[100];
-
+	
+	
 	//llamamos a la funcion leer_imagen
 	leer_imagen_pgm_encriptada(data_file, &header, &buffer_int,&tam_header,&tam_buffer);
 
-	//printf("\theader = [%s]\n", header);
-	//printf("\tbuffer_char = [%s]\n", buffer_char);
-	//printf("\ttam_header<%d>\n", tam_header);
-	//printf("\ttam_buffer<%d>\n",tam_buffer );
-	
-	//se pasa el buffer de char a int
-	/*buffer_int = (int*) calloc(tam_buffer,sizeof(int));
-	for (int i = 0; i < tam_buffer-1; ++i)
-	{
-		buffer_int[i]=define_abecedario(buffer_char[i]);
-	}*/
-
-	/*printf("\tbuffer_int ");
-	for (int i = 0; i < tam_buffer; ++i)
-	{
-		printf("<%d>",buffer_int[i] );
-	}
-	printf("\n");*/
 
 	//se desencripta
 	for (int pasada = 1; pasada >=0; pasada--)
@@ -79,35 +66,20 @@ int desencriptar(char *data_file , char *user_key ,int zn, int lvl_seguridad, ch
 			{
 				buffer_int[k]=vector[i];
 				k++;
-				//printf("%i-",vector[i] );
 			}
-			//printf("\n");
 		}
-		/*printf("\tbuffer_int post cript");
-		for (int i = 0; i < tam_buffer; ++i)
-		{
-			printf("<%d>",buffer_int[i] );
-		}
-		printf("\n");*/
 	}
 
 	//se reserva la memoria de buffer_char
 	buffer_char=(char*)malloc((tam_buffer+10)*sizeof(char*));
-	//printf("test\n");
 
 	//se pasa el buffer de int a char
 	for (int i = 0; i < tam_buffer-8; ++i)
 	{
-		//printf("%i\n",buffer_int[i]);
 		buffer_int[i]=buffer_int[i]%zn;
-		//printf("test2\n");
 		buffer_char[i] = redefine_abecedario(buffer_int[i]);
-		//printf("test3\n");
-		//printf("%c\n",buffer_char[i] );
-		//printf("\n");
 		buffer_char[i+1]='\0';
 	}
-
 	//se guarda el fichero
 	//abrimos el fichero en modo escritura
 	if ( (f = fopen(end_path,"w")) == NULL)
@@ -122,7 +94,6 @@ int desencriptar(char *data_file , char *user_key ,int zn, int lvl_seguridad, ch
 		fputc(header[c],f);
 		c++;
 	}
-
 	//se guarda el buffer desencriptado
 	c=0;
 	while ( buffer_char[c] != '\0' )
@@ -146,7 +117,7 @@ int desencriptar(char *data_file , char *user_key ,int zn, int lvl_seguridad, ch
 			c++;
 		}
 	}
- 
+
 	fflush(f);
 
 	fclose(f);

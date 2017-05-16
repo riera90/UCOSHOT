@@ -1,3 +1,6 @@
+//Author: Diego Rodríguez Riera
+//Brief: read functions for the images
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

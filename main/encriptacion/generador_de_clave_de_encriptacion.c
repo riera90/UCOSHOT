@@ -1,3 +1,7 @@
+//Author: Diego Rodríguez Riera
+//Brief: crypt key generator
+
+
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
