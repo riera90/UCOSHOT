@@ -48,6 +48,6 @@ lib_encriptacion.a: ./encriptacion/encriptador.o ./encriptacion/decript.o ./encr
 
 
 
-clear:
+clean:
 	@echo borrando ficheros ".o" ...
 	@rm -rf *.o
